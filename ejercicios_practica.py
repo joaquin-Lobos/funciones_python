@@ -19,18 +19,39 @@ import random
 
 
 def imprimir_nombre(nombre, apellido):
-    pass
+    print(nombre, apellido)
     # En este lugar debe colocar el "print" e imprimir
     # en pantalla el nombre y apellido que vienen por parámetro
     # print(.....)
 
 
 def promedio(numeros):
+    if len(numeros) > 0:
+        promedio = sum(numeros) / len(numeros)
+        return promedio
+    else:
+        return
     # Alumno:
     # 1) calcule el promedio
     # 2) use "return" para retornar ese valor
-    pass  # Cuando termine de implementar está función borrar "pass"
+    # Cuando termine de implementar está función borrar "pass"
 
+def ordenar(numeros):
+    numeros.sort()
+    return 
+
+def lista_aleatoria(inicio, fin, cantidad):
+    contador = 0
+    lista_random = []
+    while contador != cantidad:
+        contador += 1
+        numero = random.randrange(inicio, fin+1)
+        lista_random.append(numero)
+
+    return lista_random
+
+def contar(lista, numero):
+    return lista.count(numero)
 
 def ej1():
     print('Mi primera funcion')
@@ -39,7 +60,7 @@ def ej1():
     # Esa función ya se encuentra a medio armar al principio de este archivo.
     # Debe cumpletar la función para que se imprima en pantalla su nombre y apellido
     # Debe invocar a la función como:
-    imprimir_nombre('mi_nombre', 'mi_apellido')
+    imprimir_nombre('Joaquín', 'Lobos')
 
     # Reemplazar por su nombre y apellido los textos
 
@@ -47,7 +68,11 @@ def ej1():
 def ej2():
     # Ejercicios con funciones del sistema
     numeros = [2, 4, 6, 8, 10, 12]
-
+    if promedio(numeros) != None:
+        print("El promedio es:", promedio(numeros))
+    else:
+        print("no se ha ingresado ningun numero")
+            
     '''
     Realice una funcion llamada "promedio" la cual
     reciba como parámetro una lista de números y calcule
@@ -84,8 +109,9 @@ def ej2():
 
 def ej3():
     # Ejercicios de listas y métodos
-    numeros = [2, 4, 6, 8, 10, 12]
-
+    numeros = [2, 7, 6, 38, 100, 12]
+    ordenar(numeros)
+    print(numeros)
     '''
     Generar una una nueva funcion que se llame "ordenar",
     que utilizaremos para odernar la lista de numeros.
@@ -108,11 +134,11 @@ def ej4():
     inicio = 0
     fin = 10
     cantidad = 5
-
+    print(lista_aleatoria(inicio, fin, cantidad))
     # Ejemplo de como obtener un numero aleatorio
     # entre inicio y fin
     # inicio <= numero <= fin
-    numero = random.randrange(inicio, fin+1)
+    # numero = random.randrange(inicio, fin+1)
     # Documentación oficial de random
     # https://docs.python.org/3.7/library/random.html
     # Ante cualquier duda preguntar en el campus!
@@ -143,7 +169,13 @@ def ej4():
 
 def ej5():
     # Ejercicios de listas y métodos
+    numero = int(input("Ingrese un numero\n"))
     cantidad_numeros = 5
+    inicio = 1
+    fin = 9
+    lista = lista_aleatoria(inicio, fin, cantidad_numeros)
+    print("la lista es:", lista)
+    print("aparece",contar(lista, numero), "en la lista")
 
     '''
     Utilice la función "lista_aleatoria" para generar
@@ -166,7 +198,7 @@ def ej5():
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    ej1()
+    # ej1()
     # ej2()
     # ej3()
     # ej4()

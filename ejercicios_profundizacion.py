@@ -15,6 +15,24 @@ __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
 __version__ = "1.3"
 
+import joaquin_lobos_tools as it
+import joaquin_lobos_tools
+
+def generala(dados_guardados, dados_tirados, cuantos, max_repeticiones):
+    while True:
+        if (dados_guardados == None) and (cuantos != 1):
+            dados_guardados.append(max_repeticiones)
+        elif dados_guardados.count(max_repeticiones) != cuantos:
+            dados_guardados.append(max_repeticiones)
+            dados_tirados.remove(max_repeticiones)
+        elif cuantos == 1:
+            print("todos los numeros son distintos, por favor tira de nuevo")
+            break
+        elif cuantos == 6:
+            print("todos los numeros son iguales, ¡ganaste!")
+            break
+        else:
+            break
 
 def ej1():
     print('Comencemos a crear lo nuestro!')
@@ -36,7 +54,12 @@ def ej1():
 
 def ej2():
     print("Jugando a los dados")
-
+    inicio = 1
+    fin = 6
+    cantidad = 5
+    lista = joaquin_lobos_tools.lista_aleatoria(inicio, fin, cantidad)
+    joaquin_lobos_tools.ordenar(lista)
+    print("los resultados son:", lista) 
     '''
     Un dado común tiene 6 caras, 6 resultados posibles
     1 - 2 - 3 - 4 - 5 - 6
@@ -58,6 +81,16 @@ def ej2():
 
 def ej3():
     print("Jugando a los dados")
+    inicio = 1
+    fin = 6
+    cantidad = 5
+    lista = joaquin_lobos_tools.lista_aleatoria(inicio, fin, cantidad)
+    print(lista)
+    for i in range(inicio, fin+1):
+        print("el", i, "aparece", joaquin_lobos_tools.contar(lista, i), "veces")
+
+    max_repeticiones = max(lista, key=lista.count)
+    print("el numero que más se repitio es ", max_repeticiones)
 
     '''
     Un dado común tiene 6 caras, 6 resultados posibles
@@ -91,6 +124,37 @@ def ej3():
 
 def ej4():
     print("Ahora sí! buena suerte :)")
+    dados_guardados = []
+    inicio = 1
+    fin = 6
+    cantidad = 5
+    dados_tirados = joaquin_lobos_tools.lista_aleatoria(inicio, fin, cantidad)
+    max_repeticiones = max(dados_tirados, key=dados_tirados.count)
+    cuantos = dados_tirados.count(max_repeticiones)
+    
+    while True:
+        if (dados_guardados == None) and (cuantos != 1):
+            dados_guardados.append(max_repeticiones)
+        elif dados_guardados.count(max_repeticiones) != cuantos:
+            dados_guardados.append(max_repeticiones)
+            dados_tirados.remove(max_repeticiones)
+        elif cuantos == 1:
+            print("todos los numeros son distintos, por favor tira de nuevo")
+            break
+        elif cuantos == 6:
+            print("todos los numeros son iguales, ¡ganaste!")
+            break
+        else:
+            break
+    while len(dados_tirados) != 0:    
+        dados_tirados = joaquin_lobos_tools.lista_aleatoria(inicio, fin, len(dados_tirados))
+        for i in dados_tirados:
+            if dados_guardados[0] == i:
+                dados_guardados.append(i)
+                dados_tirados.remove(i)
+
+    print("ganaste!")
+
 
     '''
     Este ejercicio representa ya un problema que forma parte de un juego
@@ -151,4 +215,4 @@ if __name__ == '__main__':
     # ej1()
     # ej2()
     # ej3()
-    # ej4()
+    ej4()
